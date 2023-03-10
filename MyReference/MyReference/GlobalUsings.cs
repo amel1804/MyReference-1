@@ -12,8 +12,10 @@ global using System.Collections.ObjectModel;
 global using System.ComponentModel;
 global using System.Runtime.CompilerServices;
 global using System.Text.Json;
+global using System.Management;
 
 public class Globals
 {
-    public static List<Monkey> MyStaticList = new List<Monkey>();
+    public static List<Monkey> MyStaticList = new();
+    public static Queue<string> SerialBuffer = new();
 }

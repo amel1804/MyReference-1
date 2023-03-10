@@ -1,14 +1,19 @@
+using MyQualityApp.Services;
+
 namespace MyReference.ViewModel;
 
 public partial class MainViewModel : BaseViewModel
 {
+    DeviceOrientationServices MyDeviceOrientationService;
+
     [ObservableProperty]
     string monTexte = "blabla";
     public ObservableCollection<Monkey> MyShownList { get; } = new();
     public MainViewModel()
 	{
-		
-	}
+        this.MyDeviceOrientationService = new DeviceOrientationServices();
+        MyDeviceOrientationService.ConfigureScanner();
+    }
 
     [RelayCommand]
     public async Task GoToDetailPage(string data)
@@ -23,7 +28,7 @@ public partial class MainViewModel : BaseViewModel
     {
         if (IsBusy) return;
 
-        MonkeyService MyService = new MonkeyService();
+        MonkeyService MyService = new();
 
         try
         {
