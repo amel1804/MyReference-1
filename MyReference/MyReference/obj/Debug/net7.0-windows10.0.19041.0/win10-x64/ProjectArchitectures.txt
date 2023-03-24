@@ -1,1 +1,1 @@
-C:\Users\fredv\Desktop\GitFiles\MyReference2\MyReference\MyReference\MyReference.csproj;x64
+C:\Users\amben\Desktop\GitHub\MyReference\MyReference\MyReference\MyReference.csproj;x64

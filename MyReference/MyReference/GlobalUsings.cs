@@ -17,5 +17,4 @@ global using System.Management;
 public class Globals
 {
     public static List<Monkey> MyStaticList = new();
-    public static Queue<string> SerialBuffer = new();
 }

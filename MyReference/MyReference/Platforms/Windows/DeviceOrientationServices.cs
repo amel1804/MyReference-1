@@ -8,10 +8,15 @@ namespace MyQualityApp.Services;
 public partial class DeviceOrientationServices
 {
     SerialPort mySerialPort;
+
+
     public partial void ConfigureScanner()
     {
+        this.SerialBuffer = new();
+
         this.mySerialPort = new SerialPort();
-        string ComPort = "";
+
+        string ComPort = "COM3";
 
         using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption like '%(COM%'"))
         {
@@ -49,19 +54,17 @@ public partial class DeviceOrientationServices
             {
                 Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
             }
-        }        
+        }
     }
     private void DataHandler(object sender, SerialDataReceivedEventArgs e)
     {
         SerialPort sp = (SerialPort)sender;
         string data = "";
-                
-        data=sp.ReadTo("\r");
 
-        Globals.SerialBuffer.Enqueue(data);
+        data = sp.ReadTo("\r");
+
+        SerialBuffer.Enqueue(data);
     }
+
+
 }
-
-
-  
-
